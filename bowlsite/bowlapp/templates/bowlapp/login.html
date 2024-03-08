@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="post" id="loginForm">
+            <input type="hidden" name="actionpost" value="login">
+            <input placeholder="Email" aria-label="Email" id="email" name="email" class="">
+            <input placeholder="Password" aria-label="Password" id="password" type="password" name="password" autocapitalize="none" class="">
+        </form>
+        <a href="{% url 'bowlapp:createaccount'%}">Create an account</a>
+    </body>
+</html>

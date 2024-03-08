@@ -1,0 +1,15 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="post" id="loginForm">
+            {% csrf_token %}
+            <input type="hidden" name="actionpost" value="login">
+            <input placeholder="Email" aria-label="Email" id="email" name="email" class="">
+            <input placeholder="Password" aria-label="Password" id="password" type="password" name="password" autocapitalize="none" class="">
+            <input placeholder="Retype Password" aria-label="Password" id="retype_password" type="password" name="retype_password" autocapitalize="none" class="">
+            <input type="submit"/>
+        </form>
+    </body>
+</html>
