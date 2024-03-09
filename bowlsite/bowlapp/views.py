@@ -28,9 +28,23 @@ def createaccount(request):
             email = request.POST["email"]
             password = request.POST["password"]
             retyped_password = request.POST["retyped_password"]
+            if User.objects.filter(email=email).exists():
+                return render(
+                    request,
+                    "bowlapp/createaccount.html",
+                    {
+                        "error_message": "There is already an account using that email",
+                    },
+                )
             if password != retyped_password:
-                return HttpResponse("password did not match retyped password")
-            new_user = User.objects.create_user(email, email, password)
+                return render(
+                    request,
+                    "bowlapp/createaccount.html",
+                    {
+                        "error_message": "The password did not match the retyped password",
+                    },
+                )
+            new_user = User.objects.create_user(username=email, email=email, password=password)
             new_user.save()
             return HttpResponseRedirect(reverse("bowlapp:login"))
         except:
