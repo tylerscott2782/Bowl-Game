@@ -1,11 +1,9 @@
 <html>
-    <head>
-
-    </head>
     <body>
         <form method="post" id="loginForm">
             {% csrf_token %}
             <input type="hidden" name="actionpost" value="login">
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             <input placeholder="Email" aria-label="Email" id="email" name="email" class="">
             <input placeholder="Password" aria-label="Password" id="password" type="password" name="password" autocapitalize="none" class="">
             <input type="submit" />
