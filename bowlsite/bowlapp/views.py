@@ -81,19 +81,10 @@ def createaccount(request):
 
 @login_required
 def profile(request):
-    if request.method == "POST":
-        return render(
-            request,
-            "bowlapp/profile.html",
-            {
-                "user": request.user,
-            },
-        )
-    else:
-        return render(
-            request,
-            "bowlapp/profile.html",
-            {
-                "user": request.user,
-            },
-        )
+    return render(
+        request,
+        "bowlapp/profile.html",
+        {
+            "user": request.user,
+        },
+    )
