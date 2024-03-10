@@ -40,9 +40,8 @@ def login_view(request):
 
 @login_required
 def logout_view(request):
-    if request.method == "POST":
-        logout(request)
-        return HttpResponseRedirect(reverse("bowlapp:login"))
+    logout(request)
+    return HttpResponseRedirect(reverse("bowlapp:login"))
 
 def createaccount(request):
     if request.method == "POST":
