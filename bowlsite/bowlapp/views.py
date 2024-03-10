@@ -34,7 +34,15 @@ def login_view(request):
                 },
             )
     else:
+        if not request.user.is_anonymous and request.user.is_authenticated:
+            return HttpResponseRedirect(reverse("bowlapp:profile"))
         return render(request, "bowlapp/login.html")
+
+@login_required
+def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+        return HttpResponseRedirect(reverse("bowlapp:login"))
 
 def createaccount(request):
     if request.method == "POST":
@@ -74,10 +82,19 @@ def createaccount(request):
 
 @login_required
 def profile(request):
-    return render(
-        request,
-        "bowlapp/profile.html",
-        {
-            "user": request.user,
-        },
-    )
+    if request.method == "POST":
+        return render(
+            request,
+            "bowlapp/profile.html",
+            {
+                "user": request.user,
+            },
+        )
+    else:
+        return render(
+            request,
+            "bowlapp/profile.html",
+            {
+                "user": request.user,
+            },
+        )

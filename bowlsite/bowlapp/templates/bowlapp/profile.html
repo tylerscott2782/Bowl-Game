@@ -1,5 +1,9 @@
 <html>
     <body>
         <h1>Welcome, {{ user.email }}!</h1>
+        <form method="post" id="logoutForm" action="/logout">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
     </body>
 </html>
